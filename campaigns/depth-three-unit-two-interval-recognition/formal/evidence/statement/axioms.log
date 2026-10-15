@@ -1,0 +1,2 @@
+'DepthThreeUnitTwoIntervalRecognition.Goal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'DepthThreeUnitTwoIntervalRecognition.solve' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

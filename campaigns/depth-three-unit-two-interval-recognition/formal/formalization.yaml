@@ -1,0 +1,68 @@
+{
+  "version": "v0.4",
+  "project": {
+    "name": "depth-three-unit-two-interval-recognition: open question",
+    "description": "Construct deterministic polynomial-time maps F and G: F sends every legal source instance to a legal target instance, and G(x,y) is a valid source output for every valid output y of F(x). Preserve the stated threshold, domain and promises. The requested complexity conclusion is NP-hardness for the stated target problem.",
+    "authors": [
+      "Xiwei Pan",
+      "GPT-6"
+    ],
+    "responsible_maintainers": [
+      "Xiwei Pan"
+    ],
+    "license": "Apache-2.0"
+  },
+  "sources": [
+    {
+      "title": "Q011 board definition",
+      "id": "record.json",
+      "type": "problem statement",
+      "relationship": "formalizes"
+    }
+  ],
+  "status": {
+    "scope": "Statement only; no reduction or proof supplied. Counts exclude Challenge.lean and count its unfilled Solution.lean copy.",
+    "sorry_count": 1,
+    "sorry_in_definitions": 0,
+    "axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice",
+      "sorryAx"
+    ]
+  },
+  "fidelity": {
+    "divergences": "Each pair records the rational left endpoints of two closed length-one intervals. The pair must be disjoint, so touching its own endpoint is forbidden. Touching intervals of different vertices count as an intersection. Depth at most three excludes a common point in any four intervals. Rational endpoints are a finite modelling choice: each fixed intersection/nonintersection pattern is given by rational linear equalities and strict or weak inequalities, so a real realization admits a rational one. No polynomial bound on witness denominators is assumed. Reference limitation: SAT variable counts are binary while full search assignments are explicit; unused variables can make certificates exponentially larger than the input. SEMANTIC REVIEW: interval endpoints are rational. The equivalence with unrestricted real endpoints relies on rational feasibility of finite linear equalities and strict/weak inequalities; that auxiliary equivalence is not separately proved here."
+  },
+  "review": {
+    "status": "self-assessed; proof absent",
+    "reviewers": [],
+    "notes": "Local build and axiom audit are recorded in evidence/statement. Comparator execution exits at the missing Linux bubblewrap prerequisite; no statement-agreement or Linux CI pass is claimed."
+  },
+  "alignment": {
+    "namespace": "DepthThreeUnitTwoIntervalRecognition",
+    "statements": [
+      {
+        "source": "record.json",
+        "lean": "DepthThreeUnitTwoIntervalRecognition.solve",
+        "module": "Challenge",
+        "status": "open; statement only"
+      }
+    ]
+  },
+  "automation": {
+    "methods": [
+      {
+        "method": "agent",
+        "models": [
+          "GPT-6"
+        ],
+        "framework": "Codex",
+        "tool_setup": "Lean 4.35.0, pinned Mathlib, native semantic examples, local axiom audit; Linux comparator configured but unavailable on macOS",
+        "prompting_notes": "State the fixed board question without proving it; preserve the Q001 reduction contract and flag unresolved modelling choices."
+      }
+    ],
+    "notes": "No mathematical solution or independent review is claimed."
+  },
+  "acknowledgements": "Lean, Mathlib, and the Q001 comparator project at 6e5d9d7aa425db5f01ee44f4c4e1710cf2993fda."
+}

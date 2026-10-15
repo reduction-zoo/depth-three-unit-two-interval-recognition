@@ -1,0 +1,7 @@
+{
+  "id": "Q011",
+  "source_definition": "A source instance is an explicitly encoded Boolean formula with at most three literals per clause. Its outputs are satisfying Boolean assignments, or NO-SOLUTION when the formula is unsatisfiable.",
+  "target_definition": "Given a simple graph, represent each vertex by two disjoint unit intervals so that intersection is exactly adjacency and no point lies in more than three intervals, or report NO-SOLUTION. A finite endpoint encoding is required.",
+  "required_result": "Construct deterministic polynomial-time maps F and G: F sends every legal source instance to a legal target instance, and G(x,y) is a valid source output for every valid output y of F(x). Preserve the stated threshold, domain and promises. The requested complexity conclusion is NP-hardness for the stated target problem.",
+  "equation": ""
+}

@@ -1,0 +1,43 @@
+name: Lean
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  formal:
+    name: Build and verify the open question
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: campaigns/depth-three-unit-two-interval-recognition/formal
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9
+        with:
+          build: true
+          lake-package-directory: campaigns/depth-three-unit-two-interval-recognition/formal
+      - name: Audit the statement's axioms
+        run: lake env lean Audit.lean
+      - name: Install bubblewrap for lake comparator's sandbox
+        # The disposable Ubuntu runner restricts user namespaces through AppArmor.
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq bubblewrap >/dev/null
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - name: Test comparator verdicts with real projects
+        run: python3 scripts/test_verify_comparator.py
+      - name: Verify statement match and the expected open proof status
+        run: ./scripts/verify-comparator.sh

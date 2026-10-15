@@ -1,0 +1,3 @@
+import Challenge
+#print axioms DepthThreeUnitTwoIntervalRecognition.Goal
+#print axioms DepthThreeUnitTwoIntervalRecognition.solve
